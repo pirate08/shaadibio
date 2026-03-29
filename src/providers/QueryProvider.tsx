@@ -6,3 +6,5 @@ import { useState } from "react";
 interface QueryProviderProps {
   children: React.ReactNode;
 }
+
+export default function QueryProvider({ children }: QueryProviderProps) {}
