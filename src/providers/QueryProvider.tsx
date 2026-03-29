@@ -7,4 +7,13 @@ interface QueryProviderProps {
   children: React.ReactNode;
 }
 
-export default function QueryProvider({ children }: QueryProviderProps) {}
+export default function QueryProvider({ children }: QueryProviderProps) {
+  const [queryClient] = useState(() => new QueryClient());
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
+}
