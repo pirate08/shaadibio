@@ -9,3 +9,9 @@ export interface AuthState {
   logout: () => void;
   updateUser: (data: Partial<UserProps>) => void;
 }
+
+export interface RegisterData {
+  name: string;
+  email: string;
+  password: string;
+}
