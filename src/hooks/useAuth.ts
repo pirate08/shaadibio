@@ -5,7 +5,7 @@ import { useAuthStore } from "@/stores/useAuthStore";
 import { RegisterData, LoginData } from "@/types/auth";
 
 // --Register function goes here--
-export const Register = () => {
+export const useRegister = () => {
   const { setAuth } = useAuthStore();
   const router = useRouter();
 
@@ -36,7 +36,7 @@ export const Register = () => {
 };
 
 // Login function goes here--
-export const Login = () => {
+export const useLogin = () => {
   const { setAuth } = useAuthStore();
   const router = useRouter();
 
@@ -67,7 +67,7 @@ export const Login = () => {
 };
 
 // --Logout function goes here--
-export const Logout = () => {
+export const useLogout = () => {
   const { logout } = useAuthStore();
   const router = useRouter();
 
