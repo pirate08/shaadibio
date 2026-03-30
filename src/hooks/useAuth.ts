@@ -65,3 +65,15 @@ export const Login = () => {
     },
   });
 };
+
+// --Logout function goes here--
+export const Logout = () => {
+  const { logout } = useAuthStore();
+  const router = useRouter();
+
+  return () => {
+    logout();
+    toast.success("Logged out successfully");
+    router.push("/login");
+  };
+};
