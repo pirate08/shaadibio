@@ -25,7 +25,7 @@ export const Register = () => {
       return json;
     },
     onSuccess: (json) => {
-      setAuth(json.user, json.token);
+      setAuth(json.data, json.data.token);
       toast.success("Account created successfully!");
       router.push("/dashboard");
     },
@@ -54,6 +54,11 @@ export const Login = () => {
       if (!res.ok) throw new Error(json.message || "Login failed");
 
       return json;
+    },
+    onSuccess: (json) => {
+      setAuth(json.data, json.data.token);
+      toast.success("Welcome Back!");
+      router.push("/dashboard");
     },
   });
 };
