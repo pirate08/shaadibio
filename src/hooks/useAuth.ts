@@ -34,3 +34,26 @@ export const Register = () => {
     },
   });
 };
+
+// Login function goes here--
+export const Login = () => {
+  const { setAuth } = useAuthStore();
+  const router = useRouter();
+
+  return useMutation({
+    mutationFn: async (data: LoginData) => {
+      const res = await fetch(`${process.env.BASE_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.message || "Login failed");
+
+      return json;
+    },
+  });
+};
