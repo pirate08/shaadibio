@@ -60,5 +60,8 @@ export const Login = () => {
       toast.success("Welcome Back!");
       router.push("/dashboard");
     },
+    onError: (err: Error) => {
+      toast.error(err.message);
+    },
   });
 };
