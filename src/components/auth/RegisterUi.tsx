@@ -27,7 +27,7 @@ const RegisterUi = () => {
         {/* Google Button */}
         <button
           type="button"
-          className="w-full flex items-center justify-center gap-3 border border-gray-200 rounded-lg py-2.5 text-lg  hover:bg-gray-50 transition mb-4"
+          className="w-full flex items-center justify-center gap-3 border border-gray-200 rounded-lg py-2.5 text-lg  hover:bg-gold transition mb-4 cursor-pointer"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24">
             <path
