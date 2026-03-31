@@ -1,3 +1,5 @@
+"use client";
+
 import LoginUi from "@/components/auth/LoginUi";
 import React from "react";
 
