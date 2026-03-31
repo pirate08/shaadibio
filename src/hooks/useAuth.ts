@@ -11,13 +11,16 @@ export const useRegister = () => {
 
   return useMutation({
     mutationFn: async (data: RegisterData) => {
-      const res = await fetch(`${process.env.BASE_URL}/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      });
+      );
       const json = await res.json();
 
       if (!res.ok) throw new Error(json.message || "Registration failed");

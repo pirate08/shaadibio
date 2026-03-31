@@ -42,7 +42,7 @@ const RegisterUi = ({
   showConfirm,
   tooglePassword,
   confirmPassword,
-}) => {
+}: RegisterUIProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F5F0EB] p-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
@@ -148,9 +148,9 @@ const RegisterUi = ({
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
             >
               {showPassword ? (
-                <EyeOff className="w-4 h-4" />
-              ) : (
                 <Eye className="w-4 h-4" />
+              ) : (
+                <EyeOff className="w-4 h-4" />
               )}
             </button>
             {errors.password && (
@@ -178,9 +178,9 @@ const RegisterUi = ({
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
             >
               {showConfirm ? (
-                <EyeOff className="w-4 h-4" />
-              ) : (
                 <Eye className="w-4 h-4" />
+              ) : (
+                <EyeOff className="w-4 h-4" />
               )}
             </button>
             {errors.confirmPassword && (
