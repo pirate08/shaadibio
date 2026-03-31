@@ -6,6 +6,16 @@ import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { LoginData } from "@/types/auth";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+
+interface LoginUIProps {
+  onSubmit: (e: React.SubmitEvent) => void;
+  register: UseFormRegister<LoginData>;
+  errors: FieldErrors<LoginData>;
+  isPending: boolean;
+  showPassword: boolean;
+  tooglePassword: () => void;
+}
 
 const floatingLabel = cn(
   "absolute left-3 top-3.5 text-gray-400 text-sm transition-all",
@@ -22,7 +32,14 @@ const inputBase = (hasError?: boolean) =>
       : "border-gray-200 focus:ring-[#8B1A4A]/20 focus:border-[#8B1A4A]",
   );
 
-const LoginUi = () => {
+const LoginUi = ({
+  onSubmit,
+  register,
+  errors,
+  isPending,
+  showPassword,
+  tooglePassword,
+}: LoginUIProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F5F0EB] p-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
