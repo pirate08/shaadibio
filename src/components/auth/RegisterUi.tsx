@@ -13,7 +13,7 @@ interface RegisterUIProps {
   errors: FieldErrors<RegisterFormData>;
   isPending: boolean;
   showPassword: boolean;
-  showconfirm: boolean;
+  showConfirm: boolean;
   tooglePassword: () => void;
   confirmPassword: () => void;
 }
@@ -25,12 +25,24 @@ const floatingLabel = cn(
   "peer-not-placeholder-shown:top-1 peer-not-placeholder-shown:text-xs",
 );
 
-const inputBase = cn(
-  "peer w-full border rounded-lg px-3 pt-5 pb-2 text-sm outline-none focus:ring-2 transition",
-  "border-gray-200 focus:ring-[#8B1A4A]/20 focus:border-[#8B1A4A]",
-);
+const inputBase = (hasError?: boolean) =>
+  cn(
+    "peer w-full border rounded-lg px-3 pt-5 pb-2 text-sm outline-none focus:ring-2 transition cursor-pointer",
+    hasError
+      ? "border-red-400 focus:ring-red-200"
+      : "border-gray-200 focus:ring-[#8B1A4A]/20 focus:border-[#8B1A4A]",
+  );
 
-const RegisterUi = () => {
+const RegisterUi = ({
+  onSubmit,
+  register,
+  errors,
+  isPending,
+  showPassword,
+  showConfirm,
+  tooglePassword,
+  confirmPassword,
+}) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F5F0EB] p-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
@@ -82,13 +94,21 @@ const RegisterUi = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={onSubmit}>
           {/* Full Name */}
           <div className="relative">
-            <input id="name" placeholder=" " className={inputBase} />
+            <input
+              id="name"
+              placeholder=" "
+              {...register("name")}
+              className={inputBase(!!errors.name)}
+            />
             <label htmlFor="name" className={floatingLabel}>
               Full Name
             </label>
+            {errors.name && (
+              <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+            )}
           </div>
 
           {/* Email */}
@@ -97,57 +117,86 @@ const RegisterUi = () => {
               id="email"
               type="email"
               placeholder=" "
-              className={inputBase}
+              {...register("email")}
+              className={inputBase(!!errors.email)}
             />
             <label htmlFor="email" className={floatingLabel}>
               Email Address
             </label>
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           {/* Password */}
           <div className="relative">
             <input
               id="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder=" "
-              className={cn(inputBase, "pr-10")}
+              {...register("password")}
+              className={cn(inputBase(!!errors.password), "pr-10")}
             />
             <label htmlFor="password" className={floatingLabel}>
               Password
             </label>
             <button
               type="button"
+              onClick={tooglePassword}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
             >
-              <EyeOff className="w-4 h-4" />
+              {showPassword ? (
+                <EyeOff className="w-4 h-4" />
+              ) : (
+                <Eye className="w-4 h-4" />
+              )}
             </button>
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           {/* Confirm Password */}
           <div className="relative">
             <input
               id="confirmPassword"
-              type="password"
+              type={showConfirm ? "text" : "password"}
               placeholder=" "
-              className={cn(inputBase, "pr-10")}
+              {...register("confirmPassword")}
+              className={cn(inputBase(!!errors.confirmPassword), "pr-10")}
             />
             <label htmlFor="confirmPassword" className={floatingLabel}>
               Confirm Password
             </label>
             <button
               type="button"
+              onClick={confirmPassword}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
             >
-              <EyeOff className="w-4 h-4" />
+              {showConfirm ? (
+                <EyeOff className="w-4 h-4" />
+              ) : (
+                <Eye className="w-4 h-4" />
+              )}
             </button>
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.confirmPassword.message}
+              </p>
+            )}
           </div>
 
           {/* Submit */}
           <Button
             type="submit"
+            disabled={isPending}
             className="w-full bg-[#8B1A4A] hover:bg-[#7a1640] text-white rounded-lg py-5 text-lg transition cursor-pointer"
           >
-            Create Account
+            {isPending ? "Creating..." : "Create Account"}
           </Button>
 
           <p className="text-center text-md text-gray-500">
