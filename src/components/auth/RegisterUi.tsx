@@ -1,18 +1,29 @@
 "use client";
-
 import React from "react";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
-import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const floatingLabel = cn(
+  "absolute left-3 top-3.5 text-gray-400 text-sm transition-all",
+  "peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm",
+  "peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#8B1A4A]",
+  "peer-not-placeholder-shown:top-1 peer-not-placeholder-shown:text-xs",
+);
+
+const inputBase = cn(
+  "peer w-full border rounded-lg px-3 pt-5 pb-2 text-sm outline-none focus:ring-2 transition",
+  "border-gray-200 focus:ring-[#8B1A4A]/20 focus:border-[#8B1A4A]",
+);
 
 const RegisterUi = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F5F0EB] p-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
         {/* Logo */}
-        <div className="flex justify-center items-center mb-6">
-          <div className="text-3xl mb-1">💍</div>
+        <div className="flex justify-center items-center gap-2 mb-6">
+          <div className="text-3xl">💍</div>
           <h1 className="text-2xl font-bold text-gray-800">ShaadiBio</h1>
         </div>
 
@@ -20,7 +31,7 @@ const RegisterUi = () => {
         <h2 className="text-xl font-bold text-center text-gray-800 mb-1">
           Create Account
         </h2>
-        <p className="text-md text-center text-gray-500 mb-6">
+        <p className="text-sm text-center text-gray-500 mb-6">
           Start creating your beautiful biodata
         </p>
 
@@ -61,19 +72,8 @@ const RegisterUi = () => {
         <form className="space-y-4">
           {/* Full Name */}
           <div className="relative">
-            <input
-              id="name"
-              placeholder=" "
-              className={`peer w-full border rounded-lg px-3 pt-5 pb-2 text-sm outline-none focus:ring-2 transition
-                `}
-            />
-            <label
-              htmlFor="name"
-              className="absolute left-3 top-3.5 text-gray-400 text-sm transition-all
-                peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm
-                peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#8B1A4A]
-                peer-not-placeholder-shown:top-1 peer-not-placeholder-shown:text-xs"
-            >
+            <input id="name" placeholder=" " className={inputBase} />
+            <label htmlFor="name" className={floatingLabel}>
               Full Name
             </label>
           </div>
@@ -84,16 +84,9 @@ const RegisterUi = () => {
               id="email"
               type="email"
               placeholder=" "
-              className={`peer w-full border rounded-lg px-3 pt-5 pb-2 text-sm outline-none focus:ring-2 transition
-               `}
+              className={inputBase}
             />
-            <label
-              htmlFor="email"
-              className="absolute left-3 top-3.5 text-gray-400 text-sm transition-all
-                peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm
-                peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#8B1A4A]
-                peer-not-placeholder-shown:top-1 peer-not-placeholder-shown:text-xs"
-            >
+            <label htmlFor="email" className={floatingLabel}>
               Email Address
             </label>
           </div>
@@ -102,23 +95,15 @@ const RegisterUi = () => {
           <div className="relative">
             <input
               id="password"
-              //   type={showPassword ? 'text' : 'password'}
+              type="password"
               placeholder=" "
-              className={`peer w-full border rounded-lg px-3 pt-5 pb-2 pr-10 text-sm outline-none focus:ring-2 transition
-                `}
+              className={cn(inputBase, "pr-10")}
             />
-            <label
-              htmlFor="password"
-              className="absolute left-3 top-3.5 text-gray-400 text-sm transition-all
-                peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm
-                peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#8B1A4A]
-                peer-not-placeholder-shown:top-1 peer-not-placeholder-shown:text-xs"
-            >
+            <label htmlFor="password" className={floatingLabel}>
               Password
             </label>
             <button
               type="button"
-              //   onClick={togglePassword}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
             >
               <EyeOff className="w-4 h-4" />
@@ -129,23 +114,15 @@ const RegisterUi = () => {
           <div className="relative">
             <input
               id="confirmPassword"
-              //   type={showConfirm ? 'text' : 'password'}
+              type="password"
               placeholder=" "
-              className={`peer w-full border rounded-lg px-3 pt-5 pb-2 pr-10 text-sm outline-none focus:ring-2 transition
-                `}
+              className={cn(inputBase, "pr-10")}
             />
-            <label
-              htmlFor="confirmPassword"
-              className="absolute left-3 top-3.5 text-gray-400 text-sm transition-all
-                peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm
-                peer-focus:top-1 peer-focus:text-xs peer-focus:text-[#8B1A4A]
-                peer-not-placeholder-shown:top-1 peer-not-placeholder-shown:text-xs"
-            >
+            <label htmlFor="confirmPassword" className={floatingLabel}>
               Confirm Password
             </label>
             <button
               type="button"
-              //   onClick={toggleConfirm}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
             >
               <EyeOff className="w-4 h-4" />
@@ -155,7 +132,6 @@ const RegisterUi = () => {
           {/* Submit */}
           <Button
             type="submit"
-            // disabled={isPending}
             className="w-full bg-[#8B1A4A] hover:bg-[#7a1640] text-white rounded-lg py-5 text-lg transition cursor-pointer"
           >
             Create Account
