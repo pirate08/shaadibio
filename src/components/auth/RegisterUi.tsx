@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 const RegisterUi = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F5F0EB] p-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-md p-8">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
         {/* Logo */}
         <div className="flex justify-center items-center mb-6">
           <div className="text-3xl mb-1">💍</div>
@@ -20,7 +20,7 @@ const RegisterUi = () => {
         <h2 className="text-xl font-bold text-center text-gray-800 mb-1">
           Create Account
         </h2>
-        <p className="text-sm text-center text-gray-500 mb-6">
+        <p className="text-md text-center text-gray-500 mb-6">
           Start creating your beautiful biodata
         </p>
 

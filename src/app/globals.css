@@ -73,6 +73,8 @@
 
   --color-gold: #d4af37;
 
+  --color-primary-brand: #8b1a4a;
+
   --radius-sm: calc(var(--radius) * 0.6);
 
   --radius-md: calc(var(--radius) * 0.8);
@@ -154,6 +156,8 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --gold: #d4af37;
+
+  --primary-brand: #8b1a4a;
 }
 
 .dark {
