@@ -147,16 +147,16 @@ const LoginUi = ({
             disabled={isPending}
             className="w-full bg-[#8B1A4A] hover:bg-[#7a1640] text-white rounded-lg py-5 text-lg transition cursor-pointer"
           >
-            {isPending ? "Creating..." : "Create Account"}
+            {isPending ? "Signing In..." : "Sign In"}
           </Button>
 
           <p className="text-center text-md text-gray-500">
-            Already have an account?{" "}
+            Don't have an account?
             <Link
-              href="/login"
+              href="/register"
               className="text-[#8B1A4A] font-semibold hover:underline"
             >
-              Login
+              Register
             </Link>
           </p>
         </form>
