@@ -5,6 +5,18 @@ import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { RegisterFormData } from "@/types/auth";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+
+interface RegisterUIProps {
+  onSubmit: (e: React.SubmitEvent) => void;
+  register: UseFormRegister<RegisterFormData>;
+  errors: FieldErrors<RegisterFormData>;
+  isPending: boolean;
+  showPassword: boolean;
+  showconfirm: boolean;
+  tooglePassword: () => void;
+  confirmPassword: () => void;
+}
 
 const floatingLabel = cn(
   "absolute left-3 top-3.5 text-gray-400 text-sm transition-all",
