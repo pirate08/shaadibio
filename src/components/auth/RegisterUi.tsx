@@ -156,12 +156,12 @@ const RegisterUi = () => {
           <Button
             type="submit"
             // disabled={isPending}
-            className="w-full bg-[#8B1A4A] hover:bg-[#7a1640] text-white rounded-lg py-2.5 text-sm font-semibold transition"
+            className="w-full bg-[#8B1A4A] hover:bg-[#7a1640] text-white rounded-lg py-5 text-lg transition cursor-pointer"
           >
             Create Account
           </Button>
 
-          <p className="text-center text-sm text-gray-500">
+          <p className="text-center text-md text-gray-500">
             Already have an account?{" "}
             <Link
               href="/login"
