@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { RegisterFormData } from "@/types/auth";
 
 const floatingLabel = cn(
   "absolute left-3 top-3.5 text-gray-400 text-sm transition-all",
