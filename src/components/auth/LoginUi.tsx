@@ -151,7 +151,7 @@ const LoginUi = ({
           </Button>
 
           <p className="text-center text-md text-gray-500">
-            Don't have an account?
+            Don't have an account?{" "}
             <Link
               href="/register"
               className="text-[#8B1A4A] font-semibold hover:underline"
