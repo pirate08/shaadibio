@@ -14,7 +14,7 @@ const AuthGuard = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isAuthenticated, router]);
 
-  if (isAuthenticated) return null;
+  if (!isAuthenticated) return null;
 
   return <>{children}</>;
 };
