@@ -1,7 +1,12 @@
+import DashboardUI from "@/components/dashboard/DashboardUI";
 import React from "react";
 
 const Dashboard = () => {
-  return <div>Welcome Back! You are in Dashboard.</div>;
+  return (
+    <div>
+      <DashboardUI />
+    </div>
+  );
 };
 
 export default Dashboard;
