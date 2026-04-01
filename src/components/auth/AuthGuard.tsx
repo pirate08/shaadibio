@@ -1,15 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/stores/useAuthStore";
 
 const AuthGuard = () => {
-  return (
-    <div>
-      <div>
-        <h1>Working in progress..</h1>
-      </div>
-    </div>
-  );
+  const { isAuthenticated } = useAuthStore();
+  const router = useRouter();
 };
 
 export default AuthGuard;
