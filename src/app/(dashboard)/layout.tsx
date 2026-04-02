@@ -8,17 +8,15 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <AuthGuard>
-      <div className="flex min-h-screen bg-[#F5F0EB]">
-        {/* Sidebar — desktop only */}
-        <Sidebar />
+    <div className="flex min-h-screen bg-[#F5F0EB]">
+      {/* Sidebar — desktop only */}
+      <Sidebar />
 
-        {/* Main Content */}
-        <main className="flex-1 flex flex-col overflow-auto">{children}</main>
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col overflow-auto">{children}</main>
 
-        {/* Bottom Nav — mobile only */}
-        <BottomNav />
-      </div>
-    </AuthGuard>
+      {/* Bottom Nav — mobile only */}
+      <BottomNav />
+    </div>
   );
 }
