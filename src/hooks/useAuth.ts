@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { RegisterData, LoginData } from "@/types/auth";
+import { setCookie, deleteCookie } from "cookies-next";
 
 // --Register function goes here--
 export const useRegister = () => {
