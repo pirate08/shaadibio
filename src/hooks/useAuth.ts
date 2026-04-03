@@ -64,6 +64,7 @@ export const useLogin = () => {
       return json;
     },
     onSuccess: (json) => {
+      setCookie("token", json.data.token, { maxAge: 60 * 60 * 24 * 7 });
       setAuth(json.data, json.data.token);
       toast.success("Welcome Back!");
       router.push("/dashboard");
