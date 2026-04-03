@@ -81,6 +81,7 @@ export const useLogout = () => {
   const router = useRouter();
 
   return () => {
+    deleteCookie("token");
     logout();
     toast.success("Logged out successfully");
     router.push("/login");
