@@ -22,3 +22,15 @@ export function middleware(request: NextRequest) {
 
   return NextResponse.next();
 }
+
+// --Tell Next.js which routes to run this middleware on
+export const config = {
+  matcher: [
+    "/dashboard/:path*",
+    "/biodata/:path*",
+    "/templates/:path*",
+    "/settings/:path*",
+    "/login",
+    "/register",
+  ],
+};
