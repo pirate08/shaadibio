@@ -16,4 +16,9 @@ export function middleware(request: NextRequest) {
   }
 
   // --LOGIC: If user ALREADY has a token and tries to visit Login/Register -> Redirect to Dashboard--
+  if (isAuthPage && token) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
+
+  return NextResponse.next();
 }
