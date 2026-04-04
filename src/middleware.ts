@@ -9,4 +9,11 @@ export function middleware(request: NextRequest) {
   //   --Define protected and public routes--
   const isDashboardPage = pathname.startsWith("/dashboard");
   const isAuthPage = pathname === "/login" || pathname === "/register";
+
+  //   --Logic: If trying to access dashboard page without token user will be redirect to the login page--
+  if (isDashboardPage && !token) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  // --LOGIC: If user ALREADY has a token and tries to visit Login/Register -> Redirect to Dashboard--
 }
